@@ -108,8 +108,8 @@ function scorerPrompt(word) {  // input from the scorerPrompt will be passed to 
       Enter 0, 1, or 2: `
    );
 
-   word = word.toUpperCase();
-
+   word = word.toUpperCase();    //**2**// Scoring algorithm is collected and passed inside the below condition. Calling respective function 
+                                  // that is inside the scorerAlgorithm's object which is stored in the key "scoringFunction"
    if (scorePrompt === '0') {
       console.log(`Algorithm name: ${scoringAlgorithms[0].name}\nScore for the word '${word}': ${scoringAlgorithms[0].scorerFunction(word)}`);
       
@@ -123,7 +123,7 @@ function scorerPrompt(word) {  // input from the scorerPrompt will be passed to 
       console.log("Not a valid number, try again.");
    }
    
-}
+  }
 
 
 function transform (oldPointStructure){
@@ -132,7 +132,7 @@ let newPointStructure = {};  //Here we are converting the old format to new wher
 for (let points in oldPointStructure) {
    let score = Number(points); //Converting points(key in oldpointStructure) to number and assigned to a variable "score"
 
-   for (let letter of oldPointStructure[points]) {
+   for (let letter of oldPointStructure[points]) { //Iterating through each pointvalue alphabets and assigning their respected scores.
       newPointStructure[letter.toLowerCase()] = score;
    }
 }
@@ -144,9 +144,9 @@ let newPointStructure = transform(oldPointStructure); //Setting the transform fu
 // console.log("letter J:", newPointStructure['J']);
 // console.log("letter Z:", newPointStructure['Z']);
 
-function runProgram() {
-  let userWord = initialPrompt();
-  scorerPrompt(userWord);
+function runProgram() { //**1**/
+  let userWord = initialPrompt(); // User is prompted to enter the word for the game
+  scorerPrompt(userWord); //word is taken and prompting the user to choose the algorithm 
   
 }
 
